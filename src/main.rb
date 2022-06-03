@@ -1,9 +1,8 @@
 require_relative './rover.rb'
 
-plateau = ARGF.gets
-start_position = ARGF.gets
-rover_command = ARGF.gets
+plateau = ARGF.gets.chomp
+start_position = ARGF.gets.chomp
+rover_commands = ARGF.gets.chomp
 
-Rover.new(plateau, start_position, rover_command).print_info
-
-
+rover = Rover.new(plateau, start_position, rover_commands)
+rover.execute_rover_commands
