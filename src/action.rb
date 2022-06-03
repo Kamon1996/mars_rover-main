@@ -2,16 +2,19 @@ module Action
 
   @rotations = ['N', 'W', 'S', 'E', 'N', 'E']
 
-  def self.execute_rover_commands(rover_command)
-    rover_last_position = @rover_position.clone
-    @rover_command.split('').each do |command|
-      action(command)
-      if rover_is_fell?
-        Say.fail(@rover_position, @rover_last_position)
-        break
-      end
+
+  def self.execute(command, rover_position = @rover_position)
+    rover_position = case command.upcase
+    when 'L'
+      rotate_left(rover_position)
+    when 'R'
+      rotate_right(rover_position)
+    when 'M'
+      move_forward(rover_position)
+    else
+      Say.unknown_command(command)
+      rover_position
     end
-    Say.success(@rover_position)
   end
 
   def self.move_forward(rover_position)
