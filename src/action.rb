@@ -6,12 +6,11 @@ module Action
 
   def self.execute(command, rover_position)
     case command.upcase
-    when 'L' || 'R' then rotate(command, rover_position)
+    when 'L', 'R' then rotate(command, rover_position)
     when 'M' then move_forward(rover_position)
-    else
-      Say.unknown_command(command)
-      rover_position
+    else puts 'unknown command'
     end
+    rover_position
   end
 
   def self.move_forward(rover_position)
