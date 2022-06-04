@@ -7,5 +7,3 @@ start_position = ARGF.gets.chomp
 rover_commands = ARGF.gets.chomp
 rover = Rover.new(plateau, start_position, rover_commands)
 rover.execute_rover_commands
-
-p !1.between?(1, 10)
