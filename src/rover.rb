@@ -6,6 +6,8 @@ require_relative 'say'
 
 # Rover
 class Rover
+  include Action
+
   attr_reader :plateau, :start_position, :rover_commands
 
   def initialize(plateau, start_position, rover_commands)
