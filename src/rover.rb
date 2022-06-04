@@ -26,7 +26,7 @@ class Rover
 
   private
 
-  def formatted(position)
-    position.split.map { |e| /\d+/.match?(e) ? e.to_i : e }
+  def formatted(arr)
+    arr.split.map { |e| /\d+/.match?(e) ? e.to_i : e }
   end
 end

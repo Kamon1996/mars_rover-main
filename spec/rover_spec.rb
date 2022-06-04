@@ -10,6 +10,7 @@ describe Rover do
 
     it 'should be initialized in correct format' do
       expect(subject.start_position).to eq([1, 1, 'N'])
+      expect(subject.rover_position).to eq([1, 1, 'N'])
       expect(subject.plateau).to eq([5, 5])
       expect(subject.rover_commands).to eq('LLM')
     end
