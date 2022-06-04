@@ -1,11 +1,13 @@
-task default: [:test, :execute]
+# frozen_string_literal: true
 
-desc "Runs all the tests"
+task default: %i[test execute]
+
+desc 'Runs all the tests'
 task :test do
-  sh "rspec spec/ -fd"
+  sh 'rspec spec/ -fd'
 end
 
-desc "Executes the solution"
+desc 'Executes the solution'
 task :execute do
-  sh "ruby src/main.rb input.in"
+  sh 'ruby src/main.rb input.in'
 end
