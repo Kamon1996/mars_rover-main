@@ -34,7 +34,7 @@ describe Rover do
     end
   end
 
-  describe 'With params where the rover has already fallen' do
+  describe 'With params where rover has already fallen' do
     subject do
       Rover.new('5 5', '6 5 N', 'MMM')
     end

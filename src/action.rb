@@ -5,10 +5,10 @@ module Action
   @rotations = %w[N W S E N E]
 
   def self.execute(command, rover_position)
-    case command.upcase
+    case command
     when 'L', 'R' then rotate(command, rover_position)
     when 'M' then move_forward(rover_position)
-    else puts 'unknown command'
+    else p "Unknown command #{command}"
     end
     rover_position
   end
