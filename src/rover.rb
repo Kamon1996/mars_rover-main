@@ -16,7 +16,6 @@ class Rover
     @rover_commands.each_char do |command|
       rover_is_fell? ? break : Action.execute(command, @rover_position)
     end
-    @rover_position
   end
 
   def rover_is_fell?(rover_position: @rover_position, plateau: @plateau)
