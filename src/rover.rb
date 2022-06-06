@@ -19,11 +19,6 @@ class Rover
     end
   end
 
-  def rover_valid?
-    @rover_position[0].between?(0, @plateau[0]) &&
-      @rover_position[1].between?(0, @plateau[1])
-  end
-
   def execute_command(command)
     case command
     when 'L' then @rover_position[2] = @rotations[(@rotations.index(rover_position[2]) - 1)]
@@ -33,6 +28,11 @@ class Rover
     else p "Unknown command #{command}"
     end
     @rover_position
+  end
+
+  def rover_valid?
+    @rover_position[0].between?(0, @plateau[0]) &&
+      @rover_position[1].between?(0, @plateau[1])
   end
 
   private
