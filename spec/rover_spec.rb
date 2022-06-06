@@ -9,7 +9,6 @@ describe Rover do
     end
 
     it 'should be initialized in correct format' do
-      expect(subject.start_position).to eq([1, 1, 'N'])
       expect(subject.rover_position).to eq([1, 1, 'N'])
       expect(subject.plateau).to eq([5, 5])
       expect(subject.rover_commands).to eq('LLM')
@@ -18,7 +17,7 @@ describe Rover do
     it 'should return correct final coords and status' do
       subject.execute_rover_commands
       expect(subject.rover_position).to eq([1, 0, 'S'])
-      expect(subject.rover_is_fell?).to eq(false)
+      expect(subject.rover_valid?).to eq(true)
     end
   end
 
@@ -30,7 +29,7 @@ describe Rover do
     it 'should return correct final coords and status' do
       subject.execute_rover_commands
       expect(subject.rover_position).to eq([0, 6, 'N'])
-      expect(subject.rover_is_fell?).to eq(true)
+      expect(subject.rover_valid?).to eq(false)
     end
   end
 
@@ -41,7 +40,7 @@ describe Rover do
 
     it "shouldn't execute commands" do
       subject.execute_rover_commands
-      expect(subject.rover_is_fell?).to eq(true)
+      expect(subject.rover_valid?).to eq(false)
       expect(subject.rover_position).to eq([6, 5, 'N'])
     end
   end
