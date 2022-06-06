@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './rover'
+require_relative 'rover'
 require_relative 'plateau'
 
 plateau = Plateau.new(ARGF.gets.chomp).get
