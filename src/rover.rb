@@ -26,7 +26,8 @@ class Rover
 
   def execute_command(command)
     case command
-    when 'L', 'R' then rotate(command)
+    when 'L' then rover_position[2] = @rotations[(@rotations.index(rover_position[2]) - 1)]
+    when 'R' then rover_position[2] = @rotations[(@rotations.index(rover_position[2]) + 1)] 
     when 'M' then move_forward
     else p "Unknown command #{command}"
     end
@@ -41,14 +42,6 @@ class Rover
     when 'W' then rover_position[0] += 1
     when 'S' then rover_position[1] -= 1
     when 'E' then rover_position[0] -= 1
-    end
-    @rover_position
-  end
-
-  def rotate(command)
-    case command
-    when 'L' then rover_position[2] = @rotations[(@rotations.index(rover_position[2]) - 1)]
-    when 'R' then rover_position[2] = @rotations[(@rotations.index(rover_position[2]) + 1)]
     end
     @rover_position
   end
