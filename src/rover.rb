@@ -4,8 +4,8 @@ require_relative 'plateau'
 
 # Rover
 class Rover
-  attr_reader :plateau, :rover_commands, :rover_position
   ROTATIONS = %w[N E S W]
+  attr_reader :plateau, :rover_commands, :rover_position
 
   def initialize(plateau, start_position, rover_commands)
     @plateau = plateau
