@@ -5,12 +5,12 @@ require_relative 'plateau'
 # Rover
 class Rover
   attr_reader :plateau, :rover_commands, :rover_position
+  ROTATIONS = %w[N E S W]
 
   def initialize(plateau, start_position, rover_commands)
     @plateau = plateau
     @rover_position = formatted(start_position)
     @rover_commands = rover_commands
-    @rotations = %w[N E S W]
   end
 
   def execute_rover_commands(commands = @rover_commands)
@@ -22,9 +22,9 @@ class Rover
 
   def execute_command(command)
     case command
-    when 'L' then @rover_position[2] = @rotations[(@rotations.index(rover_position[2]) - 1)]
+    when 'L' then @rover_position[2] = ROTATIONS[(ROTATIONS.index(rover_position[2]) - 1)]
     when 'R' then @rover_position[2] =
-                    @rover_position[2] == 'W' ? 'N' : @rotations[(@rotations.index(rover_position[2]) + 1)]
+                    @rover_position[2] == 'W' ? 'N' : ROTATIONS[(ROTATIONS.index(rover_position[2]) + 1)]
     when 'M' then move_forward
     else p "Unknown command #{command}"
     end
