@@ -32,7 +32,7 @@ class Rover
   end
 
   def rover_valid?
-    plateau.is_include?(@rover_position)
+    plateau.is_include?(@rover_position[0], @rover_position[1])
   end
 
   private
