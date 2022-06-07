@@ -13,8 +13,8 @@ class Rover
     @rotations = %w[N E S W]
   end
 
-  def execute_rover_commands
-    @rover_commands.each_char do |command|
+  def execute_rover_commands(commands = @rover_commands)
+    commands.each_char do |command|
       rover_valid? ? execute_command(command) : break
     end
     p @rover_position
@@ -32,7 +32,7 @@ class Rover
   end
 
   def rover_valid?
-    plateau.is_include?(@rover_position[0], @rover_position[1])
+    @plateau.include?(@rover_position[0], @rover_position[1])
   end
 
   private
