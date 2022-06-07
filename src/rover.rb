@@ -7,23 +7,24 @@ class Rover
   attr_reader :plateau, :rover_commands, :rover_position
 
   def initialize(plateau, start_position, rover_commands)
-    @plateau = formatted(plateau)
+    @plateau = plateau
     @rover_position = formatted(start_position)
     @rover_commands = rover_commands
-    @rotations = %w[N W S E]
+    @rotations = %w[N E S W]
   end
 
   def execute_rover_commands
     @rover_commands.each_char do |command|
       rover_valid? ? execute_command(command) : break
     end
+    p @rover_position
   end
 
   def execute_command(command)
     case command
     when 'L' then @rover_position[2] = @rotations[(@rotations.index(rover_position[2]) - 1)]
     when 'R' then @rover_position[2] =
-                    @rover_position[2] == 'E' ? 'N' : @rotations[(@rotations.index(rover_position[2]) + 1)]
+                    @rover_position[2] == 'W' ? 'N' : @rotations[(@rotations.index(rover_position[2]) + 1)]
     when 'M' then move_forward
     else p "Unknown command #{command}"
     end
@@ -31,8 +32,7 @@ class Rover
   end
 
   def rover_valid?
-    @rover_position[0].between?(0, @plateau[0]) &&
-      @rover_position[1].between?(0, @plateau[1])
+    plateau.is_include?(@rover_position)
   end
 
   private
@@ -40,9 +40,9 @@ class Rover
   def move_forward
     case @rover_position[2]
     when 'N' then @rover_position[1] += 1
-    when 'W' then @rover_position[0] += 1
+    when 'W' then @rover_position[0] -= 1
     when 'S' then @rover_position[1] -= 1
-    when 'E' then @rover_position[0] -= 1
+    when 'E' then @rover_position[0] += 1
     end
     @rover_position
   end
